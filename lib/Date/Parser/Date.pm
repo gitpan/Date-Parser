@@ -9,7 +9,7 @@ use Time::Local;
 
 require Date::Format;
 
-our $VERSION = 0.1;
+our $VERSION = 0.2;
 
 sub new {
     my ($class, %opts) = @_;
@@ -57,9 +57,8 @@ sub new {
     }
 
     unless (defined $self->{unixtime}) {
-        use Data::Dumper;
-        print Dumper $self;
-        die "couldn't get date";
+        warn "couldn't resolve date";
+        return;
     }
 
     return $self;

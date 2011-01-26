@@ -19,7 +19,7 @@ use I18N::Langinfo qw( langinfo
     MON_7 MON_8 MON_9 MON_10 MON_11 MON_12
 );
 
-our $VERSION = 0.1;
+our $VERSION = 0.2;
 
 my @days = map { langinfo $_ } (
     DAY_1, DAY_2, DAY_3, DAY_4, DAY_5, DAY_6, DAY_7
@@ -189,10 +189,12 @@ sub _get_regexp {
 
     my @capture_order;
     my $flag = 0;
+  CHAR:
     for my $c (split(//, $format)) {
         if ($flag) {
             unless (defined $format_chars->{$c}) {
-                die "no such format character: $c";
+                warn "no such format character: $c";
+                next(CHAR);
             }
             my $regexp;
             $regexp = $format_chars->{$c}->{regexp};
