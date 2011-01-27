@@ -5,8 +5,6 @@ package Date::Parser;
 use strict;
 use warnings;
 
-use lib("lib");
-
 use Date::Parser::Date;
 
 use Date::Format;
@@ -19,7 +17,7 @@ use I18N::Langinfo qw( langinfo
     MON_7 MON_8 MON_9 MON_10 MON_11 MON_12
 );
 
-our $VERSION = 0.2;
+our $VERSION = 0.3;
 
 my @days = map { langinfo $_ } (
     DAY_1, DAY_2, DAY_3, DAY_4, DAY_5, DAY_6, DAY_7
@@ -287,11 +285,11 @@ __END__
 
 =head1 NAME
 
-  Date::Parser - Simple date parsing
+Date::Parser - Simple date parsing
 
 =head1 VERSION
 
-  Version 0.1
+Version 0.3
 
 =head1 SYNOPSIS
 
@@ -307,19 +305,19 @@ __END__
 
 =head1 DESCRIPTION
 
-  Really simple date parsing factory. Uses I18N::Langinfo for localized day/month names and abbreviations.
+Really simple date parsing factory. Uses I18N::Langinfo for localized day/month names and abbreviations.
 
 =head1 METHODS
 
 =head2 parse_data($format, $data)
 
-  Parses given $data using $format.
+Parses given $data using $format.
 
-  Returns a new L<Date::Parser::Date> -object.
+Returns a new L<Date::Parser::Date> -object.
 
 =head1 FORMAT
 
-  For parsing you can use the following formatting:
+For parsing you can use the following formatting:
 
         %%      literal %, is not captured.
         %a      day of the week abbr
@@ -354,7 +352,7 @@ __END__
 
 =head1 CAVEATS
 
-  Still under work, so missing some features.. works for most log formats pretty well.
+Still under work, so missing some features.. works for most log formats pretty well.
 
 =head1 TODO
 
@@ -366,13 +364,13 @@ __END__
 
 =head1 AUTHOR
 
-  Heikki Mehtänen, C<< <heikki@mehtanen.fi> >>
+Heikki Mehtänen, C<< <heikki@mehtanen.fi> >>
 
 =head1 COPYRIGHT & LICENSE
 
-  Copyright 2011 Heikki Mehtänen, All Rights Reserved.
+Copyright 2011 Heikki Mehtänen, All Rights Reserved.
 
-  This program is free software; you can redistribute it and/or modify it
-  under the same terms as Perl itself.
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
 
 =cut

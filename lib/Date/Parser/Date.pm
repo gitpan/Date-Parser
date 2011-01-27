@@ -9,7 +9,7 @@ use Time::Local;
 
 require Date::Format;
 
-our $VERSION = 0.2;
+our $VERSION = 0.3;
 
 sub new {
     my ($class, %opts) = @_;
@@ -145,11 +145,11 @@ __END__
 
 =head1 NAME
 
-  Date::Parser::Date - Simple date object
+Date::Parser::Date - Simple date object
 
 =head1 VERSION
 
-  Version 0.1
+Version 0.3
 
 =head1 SYNOPSIS
 
@@ -165,89 +165,92 @@ __END__
 
 =head1 DESCRIPTION
 
-  A simple date object.
+A simple date object.
 
 =head1 METHODS
 
 =head2 new(%opts)
 
-  The constructor. Attempts to construct sensible date and time values based on a simple algorithm.
-  See L</"CONSTRUCTOR PARAMETERS">.
+The constructor. Attempts to construct sensible date and time values based on a simple algorithm.
+See L</"CONSTRUCTOR_PARAMETERS">.
 
-  If unixtime is passed, it is used and other values are populated.
-  If year, month, day, hour, min and sec are provided, populates unixtime.
-  If only year, month and day are provided, uses all possible time values provided, and excepts
-    noon otherwise - then populates unixtime.
-  If only hour and min (and optionally sec) are defined, sets date for today. Afterwards, unixtime is populated.
+If unixtime is passed, it is used and other values are populated.
+
+If year, month, day, hour, min and sec are provided, populates unixtime.
+
+If only year, month and day are provided, uses all possible time values provided, and excepts
+noon otherwise - then populates unixtime.
+
+If only hour and min (and optionally sec) are defined, sets date for today. Afterwards, unixtime is populated.
 
 =head2 time2str($format)
 
-  Returns Date::Format::time2str($format, $self->unixtime).
+Returns Date::Format::time2str($format, $self->unixtime).
 
 =head2 unixtime
 
-  Returns date in unixtime.
+Returns date in unixtime.
 
 =head2 calc($date)
 
-  Expects Date::Parser::Date-object. Returns a new Date::Parser::Date-object
-  representing the time between self and given $date.
+Expects Date::Parser::Date-object. Returns a new Date::Parser::Date-object
+representing the time between self and given $date.
 
 =head2 cmp($date)
 
-  Expects Date::Parser::Date-object. Compares dates.
-  Returns -1 if this object is before $date, 0 if dates match
-  and 1 if this object is after $date.
+Expects Date::Parser::Date-object. Compares dates.
+Returns -1 if this object is before $date, 0 if dates match
+and 1 if this object is after $date.
 
 =head2 assign($key, $value)
 
-  Sets/overwrites a parameter $key with $value.
+Sets/overwrites a parameter $key with $value.
 
 =head1 CONSTRUCTOR PARAMETERS
 
-  The constructor accepts following parameters:
+The constructor accepts following parameters:
 
 =head2 unixtime
 
-  Seconds since 1.1.1970, e.g. 1295784779
+Seconds since 1.1.1970, e.g. 1295784779
 
 =head2 year
 
-  Integer year, e.g. 2 or 2011
+Integer year, e.g. 2 or 2011
 
 =head2 month
 
-  Integer month (from 0-11).
+Integer month (from 0-11).
 
 =head2 day
 
-  Integer day of the month (from 1-31).
+Integer day of the month (from 1-31).
 
 =head2 hour
 
-  Integer hour in 24-hour format (from 0-23).
+Integer hour in 24-hour format (from 0-23).
 
 =head2 min
 
-  Integer minute (from 0-59).
+Integer minute (from 0-59).
 
 =head2 sec
 
-  Integer second (from 0-59).
+Integer second (from 0-59).
 
 =head1 CAVEATS
 
-  This module doesn't verify the sanity of values given e.g. year => -102932.124
+This module doesn't verify the sanity of values given e.g. year => -102932.124
 
 =head1 AUTHOR
 
-  Heikki Mehtänen, C<< <heikki@mehtanen.fi> >>
+Heikki Mehtänen, C<< <heikki@mehtanen.fi> >>
 
 =head1 COPYRIGHT & LICENSE
 
-  Copyright 2011 Heikki Mehtänen, All Rights Reserved.
+Copyright 2011 Heikki Mehtänen, All Rights Reserved.
 
-  This program is free software; you can redistribute it and/or modify it
-  under the same terms as Perl itself.
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
 
 =cut
