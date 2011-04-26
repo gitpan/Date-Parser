@@ -9,7 +9,7 @@ use Time::Local;
 
 require Date::Format;
 
-our $VERSION = 0.3;
+our $VERSION = 0.4;
 
 sub new {
     my ($class, %opts) = @_;
@@ -149,7 +149,7 @@ Date::Parser::Date - Simple date object
 
 =head1 VERSION
 
-Version 0.3
+Version 0.4
 
 =head1 SYNOPSIS
 

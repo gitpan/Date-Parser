@@ -17,7 +17,7 @@ use I18N::Langinfo qw( langinfo
     MON_7 MON_8 MON_9 MON_10 MON_11 MON_12
 );
 
-our $VERSION = 0.3;
+our $VERSION = 0.4;
 
 my @days = map { langinfo $_ } (
     DAY_1, DAY_2, DAY_3, DAY_4, DAY_5, DAY_6, DAY_7
@@ -101,12 +101,12 @@ my $format_chars = {
     'L' => {     # month number, starting with 1
         regexp => '( [0-9]|1[0-2])',
         type => 'month',
-        parser => \&_strip_leading_space,
+        parser => sub { $_[0] = _strip_leading_space($_[0]); --$_[0]; $_[0] },
     },
     'm' => {     # month number, starting with 01
         regexp => '(0[0-9]|1[0-2])',
         type => 'month',
-        parser => \&_strip_zero,
+        parser => sub { $_[0] = _strip_zero($_[0]); --$_[0]; $_[0] },
     },
     'M' => {     # minute, leading 0's
         regexp => '([0-5][0-9])',
@@ -289,7 +289,7 @@ Date::Parser - Simple date parsing
 
 =head1 VERSION
 
-Version 0.3
+Version 0.4
 
 =head1 SYNOPSIS
 
